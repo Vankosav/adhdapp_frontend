@@ -10,11 +10,12 @@ import { Login } from "@mui/icons-material";
 import SignInForm from "./pages/SignUpPage";
 import ErrorPage from "./pages/ErrorPage";
 import LoginForm from "./pages/LoginPage";
-
+import HomePage from "./pages/HomePage";
 function App() {
   return (
     <>
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignInForm />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="*" element={<ErrorPage />} />

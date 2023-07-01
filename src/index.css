@@ -1,22 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap");
 
-:root{
-  --white: #F7F1F8;
-  --dark-blue: #3A6B7E;
-  --light-blue: #82AEB1;
-  --orange:#F39B53;
+:root {
+  --white: #f7f1f8;
+  --dark-blue: #3a6b7e;
+  --light-blue: #82aeb1;
+  --orange: #f39b53;
   --dark-orange: #df7620;
 }
 
 *,
 *::after,
-*::before{
+*::before {
   box-sizing: border-box;
 }
 
-body{
+body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', Arial, Helvetica, sans-serif ;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  color: var(--white);
 }
 
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55em 1.25em;
+  background-color: var(--dark-blue);
+}
+.navbar h2 {
+  text-transform: uppercase;
+  font-size: 1.65rem;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 45%;
+}
