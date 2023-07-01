@@ -35,7 +35,7 @@ const SignUp = () => {
         />
         <label htmlFor="">Email:</label>
         <input
-          type="text"
+          type="email"
           name="email"
           value={email}
           onChange={handleEmailInpt}
