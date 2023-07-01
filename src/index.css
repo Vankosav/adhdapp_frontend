@@ -17,9 +17,27 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-family: "Roboto", Helvetica;
   color: var(--white);
 }
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+h2 {
+  font-size: 1.65rem;
+  font-weight: 700;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* NAVBAR */
 
 .navbar {
   display: flex;
@@ -30,7 +48,6 @@ body {
 }
 .navbar h2 {
   text-transform: uppercase;
-  font-size: 1.65rem;
 }
 
 .navbar-container {
@@ -38,4 +55,48 @@ body {
   justify-content: flex-end;
   align-items: center;
   width: 45%;
+}
+
+/* HERO SECTION */
+
+.hero {
+  display: flex;
+  justify-content: center;
+  background-color: var(--light-blue);
+  padding: 1em;
+}
+
+.hero-body {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2.4rem;
+  font-weight: 900;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.hero-text {
+  padding-bottom: 0.5em;
+  width: 80%;
+  align-self: center;
+}
+
+@media (min-width: 972px) {
+  /* .hero-img {
+    background-color: red;
+    width: 600px;
+  } */
+  .hero-title {
+    font-size: 3rem;
+    width: 80%;
+    align-self: center;
+  }
+  .hero-text {
+    width: 50%;
+    font-size: 1.3rem;
+  }
 }
