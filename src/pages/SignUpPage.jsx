@@ -1,6 +1,11 @@
 import { Button } from "@mui/material";
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
+
+// const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "http://localhost:5005";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -8,12 +13,28 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("user");
+  const [errorMessage, setErrorMessage] = useState(undefined);
+
+  const navigate = useNavigate();
+
+  // Handle Submit
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newUser = { name, surname, email, password, role };
-    console.log("New user created", newUser);
+    axios
+      .post(`${API_URL}/auth/signup`, newUser)
+      .then((response) => {
+        navigate("/login");
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
   };
+
+  // Handle Inputs
+
   const handleNameInpt = (e) => setName(e.target.value);
   const handleSurnameInpt = (e) => setSurname(e.target.value);
   const handleEmailInpt = (e) => setEmail(e.target.value);
@@ -69,6 +90,10 @@ const SignUp = () => {
           Sign in
         </Button>
       </form>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+      <p>Already have account?</p>
+      <Link to={"/login"}> Login</Link>
     </div>
   );
 };
