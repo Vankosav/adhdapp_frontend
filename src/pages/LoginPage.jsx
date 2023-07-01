@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { Button } from "@mui/material";
 
 const URL = "";
 
@@ -28,7 +29,18 @@ const Login = () => {
           value={password}
           onChange={handlePassword}
         />
-        <button type="submit">Login</button>
+        <Button
+          variant="contained"
+          type="submit"
+          sx={{
+            background: "#F39B53",
+            "&:hover": {
+              background: "#df7620",
+            },
+          }}
+        >
+          Login
+        </Button>
       </form>
     </div>
   );

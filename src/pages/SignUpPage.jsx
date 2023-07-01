@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 
@@ -55,7 +56,18 @@ const SignUp = () => {
           value={role}
           onChange={handleRoleInpt}
         />
-        <button type="submit">Sign Up</button>
+        <Button
+          variant="contained"
+          type="submit"
+          sx={{
+            background: "#F39B53",
+            "&:hover": {
+              background: "#df7620",
+            },
+          }}
+        >
+          Sign in
+        </Button>
       </form>
     </div>
   );
