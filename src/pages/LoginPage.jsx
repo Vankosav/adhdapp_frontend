@@ -26,7 +26,7 @@ const Login = () => {
         console.log("JWT TOKEN", response.data.authToken);
         storeToken(response.data.authToken);
         authenticateUser();
-        navigate("/dashboard/:userId");
+        navigate("/dashboard");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
