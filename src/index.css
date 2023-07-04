@@ -19,6 +19,7 @@ body {
   padding: 0;
   font-family: "Roboto", Helvetica;
   color: var(--white);
+  background-color: var(--light-blue);
 }
 h1 {
   font-size: 2rem;
