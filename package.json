@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite webpack --env.API_URL=http://localhost:5005 --config webpack.config.dev.js",
-    "build": "vite build webpack --env.API_URL=https://www.myapi.com --config webpack.config.build.js",
+    "dev": "vite",
+    "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

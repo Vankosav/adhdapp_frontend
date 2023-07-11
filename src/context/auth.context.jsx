@@ -41,10 +41,10 @@ function AuthProviderWrapper(props) {
     localStorage.removeItem("authToken");
   };
 
-  const LogOutUser = () => {
+  const logOutUser = () => {
     console.log("Hello");
-    // removeToken();
-    //authenticateUser();
+    removeToken();
+    authenticateUser();
   };
 
   useEffect(() => {
@@ -59,7 +59,7 @@ function AuthProviderWrapper(props) {
         user,
         storeToken,
         authenticateUser,
-        LogOutUser,
+        logOutUser,
       }}
     >
       {props.children}
