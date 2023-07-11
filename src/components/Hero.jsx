@@ -10,8 +10,8 @@ const Hero = () => {
           your best friend for focusing and completing tasks
         </h1>
         <p className="hero-text">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum
-          cupiditate, officia similique id impedit adipisci.
+        nameOfTheApp is designed for improving time management skills for individuals 
+        and assisting teachers in supporting students with ADHD characteristics.
         </p>
         <Link to="/signup">
           <Button
@@ -35,7 +35,12 @@ const Hero = () => {
         </Link>
       </div>
       <div className="hero-img"></div>
+
+     
     </section>
+
+   
+    
   );
 };
 

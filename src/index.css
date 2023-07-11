@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap");
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 :root {
   --white: #f7f1f8;
@@ -85,6 +88,13 @@ p {
   align-self: center;
 }
 
+
+.herorows-text {
+  padding-bottom: 0.5em;
+  width: 50%;
+  align-self: center;
+}
+
 @media (min-width: 972px) {
   /* .hero-img {
     background-color: red;
@@ -99,4 +109,6 @@ p {
     width: 50%;
     font-size: 1.3rem;
   }
+
+  
 }
