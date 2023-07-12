@@ -1,30 +1,32 @@
-import { Sidebar } from "flowbite-react";
+import { Button, Sidebar } from "flowbite-react";
+
 import { HiCalendar, HiViewBoards, HiAnnotation } from "react-icons/hi";
 
 export default function DefaultSidebar() {
   return (
-    <Sidebar
-      aria-label="Default sidebar"
-      className="h-screen width-15 p-4 bg-light-blue"
-    >
-      <Sidebar.Items>
-        <Sidebar.ItemGroup>
-          <Sidebar.Item
-            className="dashboard-link"
-            href="#"
-            icon={HiViewBoards}
-            labelColor="dark"
-          >
-            <p>Kanban</p>
-          </Sidebar.Item>
-          <Sidebar.Item className="dashboard-link" href="#" icon={HiAnnotation}>
-            <p>Notes</p>
-          </Sidebar.Item>
-          <Sidebar.Item className="dashboard-link" href="#" icon={HiCalendar}>
-            <p>Calendar</p>
-          </Sidebar.Item>
-        </Sidebar.ItemGroup>
-      </Sidebar.Items>
-    </Sidebar>
+    <div>
+      <Sidebar
+        aria-label="Default sidebar"
+        className="w-screen p-4 bg-light-blue lg:h-screen "
+      >
+        <Sidebar.Items>
+          <Sidebar.ItemGroup className="flex flex-rows justify-around lg:block">
+            <Sidebar.Item href="#" icon={HiViewBoards} labelColor="dark">
+              <Button className="border-none dashboard-link pl-2">
+                Kanban
+              </Button>
+            </Sidebar.Item>
+            <Sidebar.Item href="#" icon={HiAnnotation}>
+              <Button className="border-none dashboard-link pl-2">Notes</Button>
+            </Sidebar.Item>
+            <Sidebar.Item href="#" icon={HiCalendar}>
+              <Button className="border-none dashboard-link pl-2">
+                Calendar
+              </Button>
+            </Sidebar.Item>
+          </Sidebar.ItemGroup>
+        </Sidebar.Items>
+      </Sidebar>
+    </div>
   );
 }
