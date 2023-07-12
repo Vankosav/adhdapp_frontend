@@ -11,9 +11,13 @@ export default function DefaultSidebar() {
       >
         <Sidebar.Items>
           <Sidebar.ItemGroup className="flex flex-rows justify-around lg:block">
-            <Sidebar.Item href="#" icon={HiViewBoards} labelColor="dark">
+            <Sidebar.Item
+              href="/projects"
+              icon={HiViewBoards}
+              labelColor="dark"
+            >
               <Button className="border-none dashboard-link pl-2">
-                Kanban
+                Projects
               </Button>
             </Sidebar.Item>
             <Sidebar.Item href="#" icon={HiAnnotation}>

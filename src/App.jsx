@@ -11,12 +11,14 @@ import ErrorPage from "./pages/ErrorPage";
 import LoginForm from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
+import Projects from "./pages/Projects";
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/projects" element={<Projects />} />
 
         <Route path="/signup" element={<SignInForm />} />
         <Route path="/login" element={<LoginForm />} />
