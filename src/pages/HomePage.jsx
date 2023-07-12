@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
 import Dashboard from "./Dashboard";
-import { Footer } from "flowbite-react";
+import Footer from "../components/Footer";
 
 const HomePage = () => {
   // const { isLoggedIn, user } = useContext(AuthContext);

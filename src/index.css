@@ -90,12 +90,6 @@ p {
 }
 
 
-.herorows-text {
-  padding-bottom: 0.5em;
-  width: 50%;
-  align-self: center;
-}
-
 @media (min-width: 972px) {
   /* .hero-img {
     background-color: red;
