@@ -1,10 +1,5 @@
 import { Sidebar } from "flowbite-react";
-import {
-  HiChartPie,
-  HiCalendar,
-  HiViewBoards,
-  HiAnnotation,
-} from "react-icons/hi";
+import { HiCalendar, HiViewBoards, HiAnnotation } from "react-icons/hi";
 
 export default function DefaultSidebar() {
   return (
@@ -14,13 +9,18 @@ export default function DefaultSidebar() {
     >
       <Sidebar.Items>
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiViewBoards} labelColor="dark">
+          <Sidebar.Item
+            className="dashboard-link"
+            href="#"
+            icon={HiViewBoards}
+            labelColor="dark"
+          >
             <p>Kanban</p>
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiAnnotation}>
+          <Sidebar.Item className="dashboard-link" href="#" icon={HiAnnotation}>
             <p>Notes</p>
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiCalendar}>
+          <Sidebar.Item className="dashboard-link" href="#" icon={HiCalendar}>
             <p>Calendar</p>
           </Sidebar.Item>
         </Sidebar.ItemGroup>
