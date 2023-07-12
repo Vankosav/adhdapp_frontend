@@ -1,8 +1,12 @@
 import { Button, Sidebar } from "flowbite-react";
+import { useState } from "react";
 
 import { HiCalendar, HiViewBoards, HiAnnotation } from "react-icons/hi";
 
-export default function DefaultSidebar() {
+export default function DefaultSidebar({ createProject, setCreateProject }) {
+  const handleProjectBtn = () => {
+    console.log("Project Button Click");
+  };
   return (
     <div>
       <Sidebar
@@ -11,12 +15,11 @@ export default function DefaultSidebar() {
       >
         <Sidebar.Items>
           <Sidebar.ItemGroup className="flex flex-rows justify-around lg:block">
-            <Sidebar.Item
-              href="/projects"
-              icon={HiViewBoards}
-              labelColor="dark"
-            >
-              <Button className="border-none dashboard-link pl-2">
+            <Sidebar.Item href="#" icon={HiViewBoards} labelColor="dark">
+              <Button
+                className="border-none dashboard-link pl-2"
+                onClick={handleProjectBtn}
+              >
                 Projects
               </Button>
             </Sidebar.Item>
