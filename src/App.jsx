@@ -11,17 +11,22 @@ import ErrorPage from "./pages/ErrorPage";
 import LoginForm from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
-import Projects from "./pages/Projects";
+import Projects from "./components/Projects";
+
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/projects" element={<Projects />} />
+        <Route path="dashboard">
+          <Route index element={<Dashboard />} />
+          <Route path="projects" element={<Dashboard />} />
+          <Route path="notes" />
+          <Route path="calendar" />
+        </Route>
 
-        <Route path="/signup" element={<SignInForm />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="signup" element={<SignInForm />} />
+        <Route path="login" element={<LoginForm />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>

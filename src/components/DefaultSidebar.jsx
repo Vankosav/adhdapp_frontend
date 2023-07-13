@@ -3,9 +3,30 @@ import { useState } from "react";
 
 import { HiCalendar, HiViewBoards, HiAnnotation } from "react-icons/hi";
 
-export default function DefaultSidebar({ createProject, setCreateProject }) {
+export default function DefaultSidebar(props) {
+  const {
+    showProjects,
+    setShowProjects,
+    showCalendar,
+    setShowCalendar,
+    showNotes,
+    setShowNotes,
+  } = props;
+
   const handleProjectBtn = () => {
-    console.log("Project Button Click");
+    setShowProjects(true);
+    setShowNotes(false);
+    setShowCalendar(false);
+  };
+  const handleNotesBtn = () => {
+    setShowProjects(false);
+    setShowNotes(true);
+    setShowCalendar(false);
+  };
+  const handleCalendarBtn = () => {
+    setShowProjects(false);
+    setShowNotes(false);
+    setShowCalendar(true);
   };
   return (
     <div>
@@ -15,7 +36,11 @@ export default function DefaultSidebar({ createProject, setCreateProject }) {
       >
         <Sidebar.Items>
           <Sidebar.ItemGroup className="flex flex-rows justify-around lg:block">
-            <Sidebar.Item href="#" icon={HiViewBoards} labelColor="dark">
+            <Sidebar.Item
+              icon={HiViewBoards}
+              href="/dashboard/projects"
+              labelColor="dark"
+            >
               <Button
                 className="border-none dashboard-link pl-2"
                 onClick={handleProjectBtn}
@@ -23,11 +48,19 @@ export default function DefaultSidebar({ createProject, setCreateProject }) {
                 Projects
               </Button>
             </Sidebar.Item>
-            <Sidebar.Item href="#" icon={HiAnnotation}>
-              <Button className="border-none dashboard-link pl-2">Notes</Button>
+            <Sidebar.Item icon={HiAnnotation}>
+              <Button
+                className="border-none dashboard-link pl-2"
+                onClick={handleNotesBtn}
+              >
+                Notes
+              </Button>
             </Sidebar.Item>
-            <Sidebar.Item href="#" icon={HiCalendar}>
-              <Button className="border-none dashboard-link pl-2">
+            <Sidebar.Item icon={HiCalendar}>
+              <Button
+                className="border-none dashboard-link pl-2"
+                onClick={handleCalendarBtn}
+              >
                 Calendar
               </Button>
             </Sidebar.Item>
