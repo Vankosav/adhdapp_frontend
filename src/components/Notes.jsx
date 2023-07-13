@@ -20,13 +20,12 @@ const Notes = () => {
     e.preventDefault();
  
     const requestBody = {
-      owner: user._id, // Access the user ID from your authentication context
+      owner: user._id, 
       title,
       content,
     };
   
-    const authToken = localStorage.getItem("authToken"); // Retrieve the authToken from localStorage or appropriate storage
-  
+    const authToken = localStorage.getItem("authToken"); 
     axios
       .post(`${URL}/auth/dashboard`, requestBody, {
         headers: {

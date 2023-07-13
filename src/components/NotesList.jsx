@@ -1,49 +1,46 @@
-import { useContext, useState } from "react";
-import axios from "axios";
-import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const URL = import.meta.env.VITE_API_URL; 
 
 const NotesList = () => {
-  const [title, setTitle] = useState("Private");
-  const [content, setContent] = useState("");
-  const [errorMessage, setErrorMessage] = useState(undefined);
+  const [notes, setNotes] = useState([]);
 
-  const navigate = useNavigate();
-  const { user } = useContext(AuthContext); // Assuming you have the user object available in your authentication context
-
-  const handleTitle = (e) => setTitle(e.target.value);
-  const handleContent = (e) => setContent(e.target.value);
-  const handleNoteSubmit = (e) => {
-    e.preventDefault();
-
-    const requestBody = {
-      owner: user._id, // Access the user ID from your authentication context
-      title,
-      content,
+  useEffect(() => {
+    const fetchNotes = async () => {
+      try {
+        const authToken = localStorage.getItem('authToken');
+        const response = await axios.get(`${URL}/auth/dashboard`, {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
+        setNotes(response.data);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
-    axios
-    .get(`${URL}/auth/dashboard`, requestBody)
-    .then((response) => {
-      console.log("JWT TOKEN", response.data.authToken);
-      // Handle the response
-      console.log(response.data);
-      navigate("/dashboard");
-    })
-    .catch((error) => {
-      // Handle the error
-      console.error(error);
-      setErrorMessage("Failed to create note.");
-    });
-};
+    fetchNotes();
+  }, []);
 
 
-
-
-return (
-<div></div>
+  return (
+    <div>
+      {notes.length > 0 && <h1>Notes List</h1>}
+      {notes.length > 0 ? (
+        notes.map((note) => (
+          <div key={note._id}>
+            <h2>{note.title}</h2>
+            <p>{note.content}</p>
+          </div>
+        ))
+      ) : (
+        <p>No notes available.</p>
+      )}
+    </div>
   );
+
 };
 
 export default NotesList;
