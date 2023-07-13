@@ -11,7 +11,6 @@ import ErrorPage from "./pages/ErrorPage";
 import LoginForm from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
-import Projects from "./components/Projects";
 
 function App() {
   return (
@@ -21,8 +20,8 @@ function App() {
         <Route path="dashboard">
           <Route index element={<Dashboard />} />
           <Route path="projects" element={<Dashboard />} />
-          <Route path="notes" />
-          <Route path="calendar" />
+          <Route path="notes" element={<Dashboard />} />
+          <Route path="calendar" element={<Dashboard />} />
         </Route>
 
         <Route path="signup" element={<SignInForm />} />

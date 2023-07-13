@@ -1,5 +1,6 @@
 import { Button, Sidebar } from "flowbite-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { HiCalendar, HiViewBoards, HiAnnotation } from "react-icons/hi";
 
@@ -13,20 +14,25 @@ export default function DefaultSidebar(props) {
     setShowNotes,
   } = props;
 
+  const navigate = useNavigate();
+
   const handleProjectBtn = () => {
     setShowProjects(true);
     setShowNotes(false);
     setShowCalendar(false);
+    navigate("/dashboard/projects");
   };
   const handleNotesBtn = () => {
     setShowProjects(false);
     setShowNotes(true);
     setShowCalendar(false);
+    navigate("/dashboard/notes");
   };
   const handleCalendarBtn = () => {
     setShowProjects(false);
     setShowNotes(false);
     setShowCalendar(true);
+    navigate("/dashboard/calendar");
   };
   return (
     <div>
@@ -38,7 +44,7 @@ export default function DefaultSidebar(props) {
           <Sidebar.ItemGroup className="flex flex-rows justify-around lg:block">
             <Sidebar.Item
               icon={HiViewBoards}
-              href="/dashboard/projects"
+              // href="/dashboard/projects"
               labelColor="dark"
             >
               <Button
