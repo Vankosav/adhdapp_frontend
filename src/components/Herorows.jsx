@@ -9,7 +9,7 @@ const HeroRows = () => {
       </h2>
       <p className="pb-10 w-6/12 ">
       Efficiently managing time involves strategizing and arranging the allocation of 
-      one's time across various tasks and responsibilities. Mastering this skill allows for working prudently 
+      one&apos time across various tasks and responsibilities. Mastering this skill allows for working prudently 
       rather than excessively, resulting in increased productivity even 
       when faced with limited time and heightened pressures.</p>
 
