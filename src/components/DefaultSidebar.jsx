@@ -6,6 +6,8 @@ import { HiCalendar, HiViewBoards, HiAnnotation, HiHome } from "react-icons/hi";
 
 export default function DefaultSidebar(props) {
   const {
+    showDashboard,
+    setShowDashboard,
     showProjects,
     setShowProjects,
     showCalendar,
@@ -17,24 +19,28 @@ export default function DefaultSidebar(props) {
   const navigate = useNavigate();
 
   const handleHomeBtn = () => {
+    setShowDashboard(true);
     setShowProjects(false);
     setShowNotes(false);
     setShowCalendar(false);
     navigate("/dashboard");
   };
   const handleProjectBtn = () => {
+    setShowDashboard(false);
     setShowProjects(true);
     setShowNotes(false);
     setShowCalendar(false);
     navigate("/dashboard/projects");
   };
   const handleNotesBtn = () => {
+    setShowDashboard(false);
     setShowProjects(false);
     setShowNotes(true);
     setShowCalendar(false);
     navigate("/dashboard/notes");
   };
   const handleCalendarBtn = () => {
+    setShowDashboard(false);
     setShowProjects(false);
     setShowNotes(false);
     setShowCalendar(true);

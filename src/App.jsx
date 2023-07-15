@@ -11,6 +11,7 @@ import ErrorPage from "./pages/ErrorPage";
 import LoginForm from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
+import IsPrivate from "./components/IsPrivate";
 
 function App() {
   return (

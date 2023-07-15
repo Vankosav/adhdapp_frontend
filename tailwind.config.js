@@ -7,7 +7,7 @@ export const theme = {
       "light-blue": "#82aeb1",
       orange: "#f39b53",
       "dark-orange": "#df7620",
-      gray: "#DDDDDD",
+      gray: "#b0b0b0",
     },
   },
 };
