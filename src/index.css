@@ -24,7 +24,6 @@ body {
   font-family: "Roboto", Helvetica;
   color: var(--white);
   background-color: var(--light-blue);
-  overflow: hidden;
 }
 h1 {
   font-size: 2rem;

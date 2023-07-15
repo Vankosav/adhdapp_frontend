@@ -17,7 +17,6 @@ const Dashboard = () => {
     return (
       <>
         <Navbar />
-        <Notes />
 
         <div className="grid grid-cols-8  grid-rows-[120px,1fr] h-screen">
           <Sidebar
