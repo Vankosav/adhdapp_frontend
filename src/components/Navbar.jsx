@@ -8,7 +8,7 @@ const Navbar = () => {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   return (
     <nav className="navbar">
-      {isLoggedIn ? <h2>{user.name}'s Dashboard</h2> : <h2>Logo</h2>}
+      {isLoggedIn ? <h2>{user.name} Dashboard</h2> : <h2>Logo</h2>}
       <div className="navbar-container">
         <div className="navbar-menu">
           {isLoggedIn && (
