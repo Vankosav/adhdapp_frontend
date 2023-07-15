@@ -22,7 +22,7 @@ const Login = () => {
 
     axios
       .post(`${URL}/auth/login`, requestBody)
-      .then((response) => {
+      .then(async (response) => {
         console.log("JWT TOKEN", response.data.authToken);
         storeToken(response.data.authToken);
         authenticateUser();
