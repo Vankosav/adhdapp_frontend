@@ -1,4 +1,5 @@
 import React from "react";
+import AddProjedct from "./AddAProject";
 
 const DashboardHome = () => {
   return (
@@ -9,6 +10,8 @@ const DashboardHome = () => {
         explicabo nulla maiores eos nemo vel velit sunt voluptates! Veniam,
         culpa?
       </p>
+
+      <AddProjedct />
     </div>
   );
 };
