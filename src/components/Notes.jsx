@@ -22,7 +22,7 @@ const Notes = () => {
   const fetchNotes = async () => {
     try {
       const authToken = localStorage.getItem("authToken");
-      const response = await axios.get(`${URL}/auth/dashboard`, {
+      const response = await axios.get(`${URL}/dashboard/notes`, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -43,7 +43,7 @@ const Notes = () => {
     try {
       const authToken = localStorage.getItem("authToken");
       await axios.put(
-        `${URL}/auth/dashboard/${noteId}`,
+        `${URL}/dashboard/notes/${noteId}`,
         {
           title: updatedTitle,
           content: updatedContent,
@@ -75,7 +75,7 @@ const Notes = () => {
   const handleDeleteNote = async (noteId) => {
     try {
       const authToken = localStorage.getItem("authToken");
-      await axios.delete(`${URL}/auth/dashboard/${noteId}`, {
+      await axios.delete(`${URL}/dashboard/notes/${noteId}`, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -96,7 +96,7 @@ const Notes = () => {
 
     const authToken = localStorage.getItem("authToken");
     axios
-      .post(`${URL}/auth/dashboard`, requestBody, {
+      .post(`${URL}/dashboard/notes`, requestBody, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
