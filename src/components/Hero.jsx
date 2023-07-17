@@ -30,7 +30,7 @@ const Hero = () => {
               marginBottom: "1.25em",
             }}
           >
-            Sign in
+            Create an account
           </Button>
         </Link>
       </div>

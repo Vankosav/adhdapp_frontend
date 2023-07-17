@@ -44,7 +44,7 @@ const Navbar = () => {
                     },
                   }}
                 >
-                  Sign in
+                  Sign up
                 </Button>
               </Link>
             </ul>

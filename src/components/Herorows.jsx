@@ -17,10 +17,10 @@ const HeroRows = () => {
       <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div className="p-5">
         <img className="w-full mb-4" src="" alt="" />
-          <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h3 className="mb-2 text-2xl text-black font-bold tracking-tight dark:text-white">
             Planning
           </h3>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          <p className="mb-3 font-normal text-black dark:text-gray-400">
           nameOfTheApp is designed for improving time management skills for individuals 
           and assisting teachers in supporting students with ADHD characteristics.
           </p>
@@ -33,10 +33,10 @@ const HeroRows = () => {
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div className="p-5">
         <img className="w-full mb-4" src="" alt="" />
-          <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h3 className="mb-2 text-2xl font-bold tracking-tight text-black dark:text-white">
             Prioritization
           </h3>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          <p className="mb-3 font-normal text-black dark:text-gray-400">
           nameOfTheApp is designed for improving time management skills for individuals 
           and assisting teachers in supporting students with ADHD characteristics.
           </p>
@@ -49,10 +49,10 @@ const HeroRows = () => {
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div className="p-5">
         <img className="w-full mb-4" src="" alt="" />
-          <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h3 className="mb-2 text-2xl font-bold tracking-tight text-black dark:text-white">
            Productivity
           </h3>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          <p className="mb-3 font-normal text-black dark:text-gray-400">
           nameOfTheApp is designed for improving time management skills for individuals 
           and assisting teachers in supporting students with ADHD characteristics.
           </p>
