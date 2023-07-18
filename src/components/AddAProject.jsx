@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { PriorityHigh } from "@mui/icons-material";
 import { AuthContext } from "../context/auth.context";
@@ -9,11 +9,15 @@ const API_URL = "http://localhost:5005";
 
 function AddProjedct(){
 
+    const {user}= useContext(AuthContext)
+
     const [title, setTitle] = useState("");
+    const [name, setName] = useState("");
     const [urgency, setUrgency] = useState("");
     const [ lowPriority, setLow] = useState([])
     const [ mediumPriority, setMedium] = useState([])
     const [ hightPriority, setHigh] = useState([])
+    const [errorMessage, setErrorMessage] = useState(undefined);
 
     const handleUrgencyChange = (e) => {
         setUrgency(e.target.value);
@@ -35,12 +39,73 @@ function AddProjedct(){
 
       setTitle("")
       setUrgency("")
-      console.log(lowPriority)
-      console.log(mediumPriority)
-      console.log(hightPriority)
-  
      
     };
+
+    const handleSave = (title, content) => {
+        const requestBody = {
+          owner: user._id,
+          title,
+          content,
+        };
+    
+        const authToken = localStorage.getItem("authToken");
+        axios
+          .post(`${URL}/dashboard/project`, requestBody, {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          })
+          .then((response) => {
+            console.log("JWT TOKEN", authToken);
+            console.log(response.data);
+            setErrorMessage(null); // Clear any previous error message
+            fetchNotes(); // Update the notes list after successful creation
+          })
+          .catch((error) => {
+            console.error(error);
+            setErrorMessage("Failed to create note.");
+          });
+
+          
+      };
+
+
+      const saveProject = () => {
+
+        console.log("im saving")
+
+        const requestBody = {
+            owner: user._id,
+            name,
+            lowPriority,
+            mediumPriority,
+            hightPriority,
+          };
+      
+          const authToken = localStorage.getItem("authToken");
+          axios
+          .post(`${API_URL}/dashboard/project`, requestBody, {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          })
+          .then((response) => {
+            console.log("JWT TOKEN", authToken);
+            console.log(response.data);
+            setErrorMessage(null); // Clear any previous error message
+            //fetchNotes(); // Update the notes list after successful creation
+          })
+          .catch((error) => {
+            console.error(error);
+            setErrorMessage("Failed to create note.");
+          });
+          setLow("")
+          setMedium("")
+          setHigh("")
+          setName("")
+      };
+    
 
 
 
@@ -48,6 +113,17 @@ function AddProjedct(){
         <>
         <div className="AddTask">
       <h3>Plan your day</h3>
+
+      <div>
+        <p>Name of the project</p>
+      <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+
+      </div>
       
       <form onSubmit={handleSubmitTask}>
         <label>Task:</label>
@@ -93,6 +169,7 @@ function AddProjedct(){
     }) }
 </div>
 
+<button onClick={ saveProject}>Save project</button>
 
 
         </>

@@ -1,7 +1,15 @@
 import React from "react";
 import AddProjedct from "./AddAProject";
+import ProjectList from "./ProjectList"
+import { useContext, useEffect, useState } from "react";
+
+
 
 const DashboardHome = () => {
+
+  const [projectState, updateProjectState]= useState(false)
+
+  
   return (
     <div className="text-white p-4">
       <h1>DashboardHome</h1>
@@ -12,6 +20,8 @@ const DashboardHome = () => {
       </p>
 
       <AddProjedct />
+
+      <ProjectList />
     </div>
   );
 };
