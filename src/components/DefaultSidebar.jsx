@@ -15,7 +15,7 @@ export default function DefaultSidebar(props) {
     showNotes,
     setShowNotes,
   } = props;
-
+  console.log(showDashboard, showProjects, showNotes, showCalendar);
   const navigate = useNavigate();
 
   const handleHomeBtn = () => {
@@ -23,6 +23,7 @@ export default function DefaultSidebar(props) {
     setShowProjects(false);
     setShowNotes(false);
     setShowCalendar(false);
+    console.log(showDashboard, showProjects, showNotes, showCalendar);
     navigate("/dashboard");
   };
   const handleProjectBtn = () => {
@@ -30,6 +31,7 @@ export default function DefaultSidebar(props) {
     setShowProjects(true);
     setShowNotes(false);
     setShowCalendar(false);
+    console.log(showDashboard, showProjects, showNotes, showCalendar);
     navigate("/dashboard/projects");
   };
   const handleNotesBtn = () => {
@@ -37,6 +39,7 @@ export default function DefaultSidebar(props) {
     setShowProjects(false);
     setShowNotes(true);
     setShowCalendar(false);
+    console.log(showDashboard, showProjects, showNotes, showCalendar);
     navigate("/dashboard/notes");
   };
   const handleCalendarBtn = () => {
@@ -44,6 +47,7 @@ export default function DefaultSidebar(props) {
     setShowProjects(false);
     setShowNotes(false);
     setShowCalendar(true);
+    console.log(showDashboard, showProjects, showNotes, showCalendar);
     navigate("/dashboard/calendar");
   };
   return (
