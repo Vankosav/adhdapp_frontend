@@ -12,31 +12,62 @@ function AuthProviderWrapper(props) {
   const storeToken = (token) => {
     localStorage.setItem("authToken", token);
   };
-
   const authenticateUser = () => {
-    const storedToken = localStorage.getItem("authToken");
-    if (storedToken) {
-      axios
-        .get(`${URL}/auth/verify`, {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        })
-        .then((response) => {
-          const user = response.data;
-          setIsLoggedIn(true);
-          setIsLoading(false);
-          setUser(user);
-        })
-        .catch((error) => {
-          setIsLoggedIn(false);
-          setIsLoading(false);
-          setUser(null);
-        });
-    } else {
-      setIsLoggedIn(false);
-      setIsLoading(false);
-      setUser(null);
-    }
+    return new Promise((resolve, reject) => {
+      const storedToken = localStorage.getItem("authToken");
+      if (storedToken) {
+        axios
+          .get(`${URL}/auth/verify`, {
+            headers: { Authorization: `Bearer ${storedToken}` },
+          })
+          .then((response) => {
+            const user = response.data;
+            setIsLoggedIn(true);
+            setIsLoading(false);
+            setUser(user);
+            resolve();
+          })
+          .catch((error) => {
+            setIsLoggedIn(false);
+            setIsLoading(false);
+            setUser(null);
+            reject();
+          });
+      } else {
+        setIsLoggedIn(false);
+        setIsLoading(false);
+        setUser(null);
+        reject();
+      }
+    });
   };
+
+  //Old version
+  // const authenticateUser = () => {
+  //   const storedToken = localStorage.getItem("authToken");
+  //   if (storedToken) {
+  //     axios
+  //       .get(`${URL}/auth/verify`, {
+  //         headers: { Authorization: `Bearer ${storedToken}` },
+  //       })
+  //       .then((response) => {
+  //         const user = response.data;
+  //         setIsLoggedIn(true);
+  //         setIsLoading(false);
+  //         setUser(user);
+  //       })
+  //       .catch((error) => {
+  //         setIsLoggedIn(false);
+  //         setIsLoading(false);
+  //         setUser(null);
+  //       });
+  //   } else {
+  //     setIsLoggedIn(false);
+  //     setIsLoading(false);
+  //     setUser(null);
+  //   }
+  // };
+
   const removeToken = () => {
     localStorage.removeItem("authToken");
   };

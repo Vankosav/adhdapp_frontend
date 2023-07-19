@@ -19,10 +19,38 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="dashboard">
-          <Route index element={<Dashboard />} />
-          <Route path="projects" element={<Dashboard />} />
-          <Route path="notes" element={<Dashboard />} />
-          <Route path="calendar" element={<Dashboard />} />
+          <Route
+            index
+            element={
+              <IsPrivate>
+                <Dashboard />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="projects"
+            element={
+              <IsPrivate>
+                <Dashboard />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="notes"
+            element={
+              <IsPrivate>
+                <Dashboard />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="calendar"
+            element={
+              <IsPrivate>
+                <Dashboard />
+              </IsPrivate>
+            }
+          />
         </Route>
 
         <Route path="signup" element={<SignInForm />} />
