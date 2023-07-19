@@ -5,13 +5,13 @@ import PlayBtn from "../components/Pomodoro/PlayBtn";
 import PauseBtn from "../components/Pomodoro/PauseBtn";
 import SettingsBtn from "../components/Pomodoro/SettingsBtn";
 import { useContext, useEffect, useRef, useState } from "react";
-import PomodoroSettingsContext from "../context/PomodoroSettings.context";
+import { PomodoroContext } from "../context/Pomodoro.context";
 
-const red = "#f54e4e";
+const orange = "#df7620";
 const green = "#4aec8c";
 
 const Timer = () => {
-  const settingsInfo = useContext(PomodoroSettingsContext);
+  const settingsInfo = useContext(PomodoroContext);
 
   const [isPaused, setIsPaused] = useState(true);
   const [secondsLeft, setSecondsLeft] = useState(0);
@@ -81,7 +81,7 @@ const Timer = () => {
         text={minutes + ":" + seconds}
         styles={buildStyles({
           textColor: "#fff",
-          pathColor: mode === "work" ? red : green,
+          pathColor: mode === "work" ? orange : green,
           trailColor: "rgba(255,255,255,0.4",
         })}
       />
