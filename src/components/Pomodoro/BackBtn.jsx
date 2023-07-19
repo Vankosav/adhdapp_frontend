@@ -1,4 +1,4 @@
-export const BackBtn = () => {
+export const BackBtn = (props) => {
   return (
     <button {...props} className="with_text">
       <svg
