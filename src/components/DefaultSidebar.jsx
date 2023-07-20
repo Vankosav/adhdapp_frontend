@@ -54,7 +54,7 @@ export default function DefaultSidebar(props) {
     <div>
       <Sidebar
         aria-label="Default sidebar"
-        className="w-screen p-4 bg-light-blue lg:h-screen "
+        className=" p-4 bg-light-blue lg:h-screen "
       >
         <Sidebar.Items>
           <Sidebar.ItemGroup className="flex flex-rows justify-around lg:block">
