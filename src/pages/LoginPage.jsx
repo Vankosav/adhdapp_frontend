@@ -16,20 +16,25 @@ const Login = () => {
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
+
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     const requestBody = { email, password };
 
     axios
       .post(`${URL}/auth/login`, requestBody)
-      .then((response) => {
+      .then(async (response) => {
         console.log("JWT TOKEN", response.data.authToken);
         storeToken(response.data.authToken);
-        authenticateUser();
+        return authenticateUser();
+      })
+      .then(() => {
         navigate("/dashboard");
       })
       .catch((error) => {
-        const errorDescription = error.response.data.message;
+        const errorDescription = error.response
+          ? error.response.data.message
+          : error.message;
         setErrorMessage(errorDescription);
       });
 
