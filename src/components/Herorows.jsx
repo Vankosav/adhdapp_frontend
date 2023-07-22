@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const HeroRows = () => {
   return (
-    <section className="bg-dark-blue flex items-center flex-col text-center">
+    <section className="bg-dark-blue flex items-center flex-col text-center w-[100%] p-3">
       <h2 className="text-2xl font-bold py-7">
         Unlocking the Power of Efficient Time Management
       </h2>
-      <p className="pb-10 w-6/12 ">
+      <p className="pb-10 w-[80%] ">
         Efficiently managing time involves strategizing and arranging the
         allocation of one&apos time across various tasks and responsibilities.
         Mastering this skill allows for working prudently rather than
@@ -14,7 +14,7 @@ const HeroRows = () => {
         limited time and heightened pressures.
       </p>
 
-      <div className="flex flex-col md:flex-row items-center pb-8 space-x-4">
+      <div className="flex flex-col gap-4 content-center  md:flex-row items-center pb-8  m-4">
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <div className="p-5">
             <img className="w-full mb-4" src="" alt="" />

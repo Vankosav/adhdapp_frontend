@@ -124,12 +124,11 @@ const Notes = () => {
   };
 
   return (
-    <div className="py-4 pl-8 max-w-2xl">
-      <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+    <div className="py-4 pl-8  flex flex-col w-[85%]">
+      <h2 className="mb-3 text-xl font-bold text-gray-900 dark:text-white">
         Create a new note
       </h2>
-
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="mb-4">
         <label
           htmlFor="title"
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -155,7 +154,7 @@ const Notes = () => {
         <textarea
           name="content"
           type="text"
-          className="block p-2.5 mb-4 w-full text-sm text-black bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          className="block p-2.5 mb-4 w-[70%] h-[150px] text-sm text-black bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
           value={updatedContent}
           onChange={handleContent}
         />
@@ -172,93 +171,97 @@ const Notes = () => {
           Create
         </Button>
       </form>
-
       {notes.length > 0 && (
-        <h1 className="mb-4 mt-20 text-xl font-bold text-gray-900 dark:text-white">
+        <h2 className="mb-4 mt-5 text-xl font-bold text-gray-900 dark:text-white">
           Your notes
-        </h1>
+        </h2>
       )}
-      {notes.length > 0 ? (
-        notes.map((note) => (
-          <div className="fb-card p-2 mb-4 notes_btn" key={note._id}>
-            {editingNoteId === note._id ? (
-              <>
-                <TextField
-                  label="Title"
-                  value={updatedTitle}
-                  onChange={handleTitle}
-                  fullWidth
-                />
-                <TextField
-                  label="Content"
-                  value={updatedContent}
-                  onChange={handleContent}
-                  fullWidth
-                  multiline
-                  rows={4}
-                />
-                <Button
-                  variant="contained"
-                  onClick={() => handleUpdateNote(note._id)}
-                  sx={{
-                    background: "#F39B53",
-                    "&:hover": {
-                      background: "#df7620",
-                    },
-                  }}
-                >
-                  Update
-                </Button>
-                <Button
-                  variant="contained"
-                  onClick={handleCancelEdit}
-                  sx={{
-                    background: "#F39B53",
-                    "&:hover": {
-                      background: "#df7620",
-                    },
-                  }}
-                >
-                  Cancel
-                </Button>
-              </>
-            ) : (
-              <>
-                <h2>{note.title}</h2>
-                <p>{note.content}</p>
-                <Button
-                  variant="contained"
-                  onClick={() =>
-                    handleEditNote(note._id, note.title, note.content)
-                  }
-                  sx={{
-                    background: "#F39B53",
-                    "&:hover": {
-                      background: "#df7620",
-                    },
-                  }}
-                >
-                  Edit
-                </Button>
-                <Button
-                  variant="contained"
-                  onClick={() => handleDeleteNote(note._id)}
-                  sx={{
-                    background: "#F39B53",
-                    "&:hover": {
-                      background: "#df7620",
-                    },
-                  }}
-                >
-                  Delete
-                </Button>
-              </>
-            )}
-          </div>
-        ))
-      ) : (
-        <p>No notes available.</p>
-      )}
+      <div className="w-[100%] h-[300px] flex flex-row flex-wrap shrink basis-3 ">
+        {notes.length > 0 ? (
+          notes.map((note) => (
+            <div
+              className="fb-card p-2 m-1 bg-white  flex flex-col gap-[5px] text-dark-blue notes_btn notes_border w-[200px]"
+              key={note._id}
+            >
+              {editingNoteId === note._id ? (
+                <>
+                  <TextField
+                    label="Title"
+                    value={updatedTitle}
+                    onChange={handleTitle}
+                    fullWidth
+                  />
+                  <TextField
+                    label="Content"
+                    value={updatedContent}
+                    onChange={handleContent}
+                    fullWidth
+                    multiline
+                    rows={4}
+                  />
+                  <Button
+                    variant="contained"
+                    onClick={() => handleUpdateNote(note._id)}
+                    sx={{
+                      background: "#F39B53",
+                      "&:hover": {
+                        background: "#df7620",
+                      },
+                    }}
+                  >
+                    Update
+                  </Button>
+                  <Button
+                    variant="contained"
+                    onClick={handleCancelEdit}
+                    sx={{
+                      background: "#F39B53",
+                      "&:hover": {
+                        background: "#df7620",
+                      },
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <h2>{note.title}</h2>
+                  <p>{note.content}</p>
+                  <Button
+                    variant="contained"
+                    onClick={() =>
+                      handleEditNote(note._id, note.title, note.content)
+                    }
+                    sx={{
+                      background: "#F39B53",
+                      "&:hover": {
+                        background: "#df7620",
+                      },
+                    }}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    variant="contained"
+                    onClick={() => handleDeleteNote(note._id)}
+                    sx={{
+                      background: "#F39B53",
+                      "&:hover": {
+                        background: "#df7620",
+                      },
+                    }}
+                  >
+                    Delete
+                  </Button>
+                </>
+              )}
+            </div>
+          ))
+        ) : (
+          <p>No notes available.</p>
+        )}
+      </div>
     </div>
   );
 };

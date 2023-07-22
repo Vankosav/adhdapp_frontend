@@ -56,6 +56,7 @@ p {
   justify-content: space-between;
   padding: 0.55em 1.25em;
   background-color: var(--dark-blue);
+  width: 100%;
 }
 .navbar img {
   margin-left: -50px;
@@ -128,7 +129,12 @@ p {
 }
 
 .notes_btn button {
-  margin-right: 1em;
+  width: 50%;
+}
+
+.notes_border {
+  border: 1px solid var(--white);
+  border-radius: 10px;
 }
 
 .pomodoro {

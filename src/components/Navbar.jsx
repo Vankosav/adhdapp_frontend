@@ -12,7 +12,7 @@ const Navbar = () => {
       {isLoggedIn ? (
         <h2>{user.name} Dashboard</h2>
       ) : (
-        <div className="p-1">
+        <div className="px-10 md:px-2">
           <img src={TimeMaster} alt="TimeMaster" />
         </div>
       )}
