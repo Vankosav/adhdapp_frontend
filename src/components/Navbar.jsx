@@ -3,12 +3,19 @@ import { Link, NavLink, Navigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import TimeMaster from "../../public/TimeMaster.svg";
 
 const Navbar = () => {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   return (
     <nav className="navbar">
-      {isLoggedIn ? <h2>{user.name} Dashboard</h2> : <h2>Logo</h2>}
+      {isLoggedIn ? (
+        <h2>{user.name} Dashboard</h2>
+      ) : (
+        <div className="p-1">
+          <img src={TimeMaster} alt="TimeMaster" />
+        </div>
+      )}
       <div className="navbar-container">
         <div className="navbar-menu">
           {isLoggedIn && (

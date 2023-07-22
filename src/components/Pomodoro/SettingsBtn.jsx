@@ -1,6 +1,6 @@
 const SettingsBtn = (props) => {
   return (
-    <button {...props} className="with_text">
+    <button {...props} className="with_text pomodoroBtn">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

@@ -57,8 +57,10 @@ p {
   padding: 0.55em 1.25em;
   background-color: var(--dark-blue);
 }
-.navbar h2 {
-  text-transform: uppercase;
+.navbar img {
+  margin-left: -50px;
+
+  min-height: 30px;
 }
 
 .navbar-container {
@@ -125,6 +127,10 @@ p {
   }
 }
 
+.notes_btn button {
+  margin-right: 1em;
+}
+
 .pomodoro {
   padding-top: 50px;
   max-width: 340px;
@@ -132,7 +138,8 @@ p {
   text-align: center;
 }
 
-button {
+.pomodoroBtn,
+.sidebar_menu button {
   background-color: transparent;
   color: rgba(255, 255, 255, 0.8);
   border: 0;

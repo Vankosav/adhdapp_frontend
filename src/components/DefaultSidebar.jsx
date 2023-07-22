@@ -51,7 +51,7 @@ export default function DefaultSidebar(props) {
     navigate("/dashboard/calendar");
   };
   return (
-    <div>
+    <div className="sidebar_menu">
       <Sidebar
         aria-label="Default sidebar"
         className=" p-4 bg-light-blue lg:h-screen "
