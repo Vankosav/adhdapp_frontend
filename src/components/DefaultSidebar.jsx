@@ -57,8 +57,8 @@ export default function DefaultSidebar(props) {
         className=" p-4 bg-light-blue lg:h-screen "
       >
         <Sidebar.Items>
-          <Sidebar.ItemGroup className="flex flex-rows justify-around lg:block">
-            <Sidebar.Item icon={HiHome} labelColor="dark">
+          <Sidebar.ItemGroup className="flex flex-rows justify-start  md:mx-[20em] md:justify-center lg:mx-auto lg:block">
+            <Sidebar.Item icon={HiHome} labelColor="dark" className="w-[100%]">
               <Button
                 className="border-none dashboard-link pl-2"
                 onClick={handleHomeBtn}
