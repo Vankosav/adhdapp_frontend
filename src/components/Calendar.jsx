@@ -6,6 +6,8 @@ import axios from 'axios';
 import { Button } from "@mui/material";
 import { AuthContext } from '../context/auth.context';
 
+
+
 const URL = import.meta.env.VITE_API_URL;
 
 const Calendar = () => {
@@ -74,8 +76,6 @@ const Calendar = () => {
     }
   };
   
-
-
   const formatDateForInput = (dateString) => {
     const date = new Date(dateString);
     const year = date.getFullYear();
@@ -85,12 +85,11 @@ const Calendar = () => {
     const minutes = String(date.getMinutes()).padStart(2, "0");
     return `${year}-${month}-${day}T${hours}:${minutes}`;
   };
+  
 
   const handleDateClick = (click) => {
-
-  
     setShowForm(true);
-    setEditingEventId(click.event.id);
+    setEditingEventId(click.event._id);
     setSelectedEvent(click.event);
     setUpdatedTitle(click.event.title);
     setUpdatedStart(formatDateForInput(click.event.start));
@@ -169,10 +168,10 @@ const Calendar = () => {
         }
       );
 
-      fetchEvents(); // Fetch updated events
-      setShowForm(false); // Hide the form
-      setEditingEventId(null); // Clear the editing event ID
-      setUpdatedTitle(""); // Clear form fields
+      fetchEvents(); 
+      setShowForm(false); 
+      setEditingEventId(null); 
+      setUpdatedTitle(""); 
       setUpdatedStart("");
       setUpdatedEnd("");
       setUpdatedLocation("");
@@ -192,7 +191,7 @@ const Calendar = () => {
           Authorization: `Bearer ${authToken}`,
         },
       });
-      // Refresh the events list after successful deletion
+      
       fetchEvents();
     } catch (error) {
       console.error(error);
@@ -205,70 +204,103 @@ const Calendar = () => {
   const handleEndChange = (e) => setUpdatedEnd(e.target.value);
   const handleLocationChange = (e) => setUpdatedLocation(e.target.value);
 
+
   return (
     <div>
-      {showForm ? (
-        <form onSubmit={handleFormSubmit}>
-          <label>
-            Title:
-            <input
-              type="text"
-              name="title"
-              value={updatedTitle}
-              onChange={handleTitleChange}
-              required
-            />
-          </label>
-          <label>
-            Start Time:
-            <input
-              type="datetime-local"
-              name="start"
-              value={updatedStart}
-              onChange={handleStartChange}
-              required
-            />
-          </label>
-          <label>
-            End Time:
-            <input
-              type="datetime-local"
-              name="end"
-              value={updatedEnd}
-              onChange={handleEndChange}
-            />
-          </label>
-          <label>
-            Location:
-            <input
-              type="text"
-              name="location"
-              value={updatedLocation}
-              onChange={handleLocationChange}
-            />
-             <Button
-            type="submit"
-            sx={{
-              background: "#F39B53",
-              "&:hover": {
-                background: "#df7620",
-              },
-            }}
-          >
-            Create an Event
-          </Button>
-          <Button
-            onClick={handleCancelEdit}
-            sx={{
-              background: "#F39B53",
-              "&:hover": {
-                background: "#df7620",
-              },
-            }}
-          >
-            Cancel
-          </Button>
-          </label>
+  {showForm ? (
+    <form onSubmit={handleFormSubmit}>
+      <label>
+        Title:
+        <input
+          type="text"
+          name="title"
+          value={updatedTitle}
+          onChange={handleTitleChange}
+          required
+        />
+      </label>
+      <label>
+        Start Time:
+        <input
+          type="datetime-local"
+          name="start"
+          value={updatedStart}
+          onChange={handleStartChange}
+          required
+        />
+      </label>
+      <label>
+        End Time:
+        <input
+          type="datetime-local"
+          name="end"
+          value={updatedEnd}
+          onChange={handleEndChange}
+        />
+      </label>
+      <label>
+        Location:
+        <input
+          type="text"
+          name="location"
+          value={updatedLocation}
+          onChange={handleLocationChange}
+        />
+        <br />
+        {/* Conditional rendering of buttons */}
+        {editingEventId ? (
+          <>
+            <Button
+              type="submit"
+              sx={{
+                background: "#F39B53",
+                "&:hover": {
+                  background: "#df7620",
+                },
+              }}
+            >
+              Update
+            </Button>
+            <Button
+              onClick={handleCancelEdit}
+              sx={{
+                background: "#F39B53",
+                "&:hover": {
+                  background: "#df7620",
+                },
+              }}
+            >
+              Cancel
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button
+              type="submit"
+              sx={{
+                background: "#F39B53",
+                "&:hover": {
+                  background: "#df7620",
+                },
+              }}
+            >
+              Create an Event
+            </Button>
+            <Button
+              onClick={handleCancelEdit}
+              sx={{
+                background: "#F39B53",
+                "&:hover": {
+                  background: "#df7620",
+                },
+              }}
+            >
+              Cancel
+            </Button>
+          </>
+        )}
+      </label>
+
   
           {events.map((event) => (
             <div className="fb-card p-2 mb-4" key={event._id}>
@@ -310,12 +342,12 @@ const Calendar = () => {
       )}
   
       <FullCalendar
-        plugins={[dayGridPlugin, interactionPlugin]}
-        initialView="dayGridMonth"
-        events={events}
-        dateClick={handleDateClick}
-        eventClick={handleEventClick} // Use the FullCalendar eventClick handler
-      />
+      plugins={[dayGridPlugin, interactionPlugin]}
+      initialView="dayGridMonth"
+      events={events}
+      dateClick={handleDateClick}
+      eventClick={handleEventClick}
+    />
     </div>
   );
   
