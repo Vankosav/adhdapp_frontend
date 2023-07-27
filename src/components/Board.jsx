@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import DashboardHome from "./DashboardHome";
 import UserNotes from "./Notes";
+import UserCalendar from "./Calendar";
 
 const Board = (props) => {
   const {
@@ -21,7 +22,7 @@ const Board = (props) => {
       {showDashboard && <DashboardHome />}
       {showProjects && <div>List of Projects</div>}
       {showNotes && <UserNotes />}
-      {showCalendar && <div>Calendar</div>}
+      {showCalendar && <UserCalendar />}
     </div>
   );
 };

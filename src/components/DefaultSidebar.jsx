@@ -48,7 +48,7 @@ export default function DefaultSidebar(props) {
     setShowNotes(false);
     setShowCalendar(true);
     console.log(showDashboard, showProjects, showNotes, showCalendar);
-    navigate("/dashboard/calendar");
+    navigate("/dashboard/events");
   };
   return (
     <div className="sidebar_menu">
