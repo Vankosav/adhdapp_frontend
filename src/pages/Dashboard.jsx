@@ -31,6 +31,7 @@ const Dashboard = () => {
             setShowNotes={setShowNotes}
           />
           <Board
+            className=""
             showDashboard={showDashboard}
             setShowDashboard={setShowDashboard}
             showProjects={showProjects}

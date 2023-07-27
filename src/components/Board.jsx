@@ -4,6 +4,8 @@ import DashboardHome from "./DashboardHome";
 import UserNotes from "./Notes";
 import ProjectBoard from "./ProjectBoard";
 import ProjectList from "./ProjectList";
+import UserCalendar from "./Calendar";
+
 
 const Board = (props) => {
   const {
@@ -23,7 +25,7 @@ const Board = (props) => {
       {showDashboard && <DashboardHome />}
       {showProjects && <ProjectList />}
       {showNotes && <UserNotes />}
-      {showCalendar && <div>Calendar</div>}
+      {showCalendar && <UserCalendar />}
     </div>
   );
 };
