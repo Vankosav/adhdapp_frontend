@@ -14,7 +14,7 @@ import {
   ArrowDownward,
 } from "@mui/icons-material";
 
-const API_URL = "http://localhost:5005";
+const URL = import.meta.env.VITE_API_URL;
 
 function ProjectList() {
   const [projects, setProjects] = useState([]);
@@ -27,7 +27,7 @@ function ProjectList() {
   const fetchProjects = async () => {
     try {
       const authToken = localStorage.getItem("authToken");
-      const response = await axios.get(`${API_URL}/dashboard/project`, {
+      const response = await axios.get(`${URL}/dashboard/project`, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -42,7 +42,7 @@ function ProjectList() {
   const delateProject = async (projectId) => {
     try {
       const authToken = localStorage.getItem("authToken");
-      await axios.delete(`${API_URL}/dashboard/project/${projectId}`, {
+      await axios.delete(`${URL}/dashboard/project/${projectId}`, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -69,7 +69,7 @@ function ProjectList() {
     const authToken = localStorage.getItem("authToken");
 
     axios
-      .put(`${API_URL}/dashboard/project/move`, requestBody, {
+      .put(`${URL}/dashboard/project/move`, requestBody, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -103,7 +103,7 @@ function ProjectList() {
     const authToken = localStorage.getItem("authToken");
 
     axios
-      .put(`${API_URL}/dashboard/project/move`, requestBody, {
+      .put(`${URL}/dashboard/project/move`, requestBody, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
