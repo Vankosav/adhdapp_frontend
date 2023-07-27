@@ -1,0 +1,191 @@
+import React from "react";
+import { useState, useContext, useEffect } from "react";
+import axios from "axios";
+import { PriorityHigh } from "@mui/icons-material";
+import { AuthContext } from "../context/auth.context";
+import AddProjedct from "./AddAProject";
+
+import { Grid, Paper, Typography, Box, IconButton } from "@mui/material";
+import { Delete, ArrowUpward, ArrowBack, ArrowForward, ArrowDownward } from "@mui/icons-material";
+
+
+
+
+const API_URL = "http://localhost:5005";
+
+
+function ProjectList(){
+
+    const [projects, setProjects] = useState([]);
+    
+
+
+    useEffect(() => {
+        fetchProjects();
+      }, []);
+
+      const fetchProjects = async () => {
+        try {
+          const authToken = localStorage.getItem("authToken");
+          const response = await axios.get(`${API_URL}/dashboard/project`, {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          });
+          setProjects(response.data);
+          console.log("fetchtry",response.data)
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      const delateProject = async (projectId) => {
+        try {
+          const authToken = localStorage.getItem("authToken");
+          await axios.delete(`${API_URL}/dashboard/project/${projectId}`, {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          });
+          // Refresh the notes list after successful deletion
+          fetchProjects();
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      const moveTaskUp = (projectIndex, taskIndex) => {
+        // Implement the logic to move the task up in the array
+      };
+      
+      const moveTaskToLeft = (projectIndex, taskIndex) => {
+        // Implement the logic to move the task to the left (different array or position)
+      };
+      
+      const moveTaskToRight = (projectIndex, taskIndex) => {
+        // Implement the logic to move the task to the right (different array or position)
+      };
+      
+      const moveTaskDown = (projectIndex, taskIndex) => {
+        // Implement the logic to move the task down in the array
+      };
+
+      return (
+        <Grid container spacing={2} direction="column" alignItems="center">
+          <Grid item xs={12} md={6}>
+            <AddProjedct fetchProjects={fetchProjects} />
+          </Grid>
+      
+          {projects.map((project, projectIndex) => (
+            <Grid item xs={12} md={10} key={project._id}>
+              <Paper elevation={3} sx={{ padding: 2, textAlign: "center" }}>
+                <Typography variant="h5">Project: {project.name}</Typography>
+      
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    margin: "0 20px",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      backgroundColor: "#d4e1f1",
+                      padding: 2,
+                      borderRadius: 5,
+                      width: "30%", // Set the width to 30% of the total screen width
+                    }}
+                  >
+                    <Typography variant="h6">Low:</Typography>
+                    {project.lowPriority.map((task, index) => (
+                      <Box key={index} sx={{ display: "flex", alignItems: "center", marginBottom: 4 }}>
+                        <IconButton onClick={() => moveTaskUp(projectIndex, index)}>
+                          <ArrowUpward />
+                        </IconButton>
+                        <IconButton onClick={() => moveTaskToLeft(projectIndex, index)}>
+                          <ArrowBack />
+                        </IconButton>
+                        <Typography>{task}</Typography>
+                        <IconButton onClick={() => moveTaskToRight(projectIndex, index)}>
+                          <ArrowForward />
+                        </IconButton>
+                        <IconButton onClick={() => moveTaskDown(projectIndex, index)}>
+                          <ArrowDownward />
+                        </IconButton>
+                      </Box>
+                    ))}
+                  </Box>
+      
+                  <Box
+                    sx={{
+                      backgroundColor: "#f8eaae",
+                      padding: 2,
+                      borderRadius: 5,
+                      width: "30%", // Set the width to 30% of the total screen width
+                    }}
+                  >
+                    <Typography variant="h6">Medium:</Typography>
+                    {project.mediumPriority.map((task, index) => (
+                      <Box key={index} sx={{ display: "flex", alignItems: "center", marginBottom: 4 }}>
+                        <IconButton onClick={() => moveTaskUp(projectIndex, index)}>
+                          <ArrowUpward />
+                        </IconButton>
+                        <IconButton onClick={() => moveTaskToLeft(projectIndex, index)}>
+                          <ArrowBack />
+                        </IconButton>
+                        <Typography>{task}</Typography>
+                        <IconButton onClick={() => moveTaskToRight(projectIndex, index)}>
+                          <ArrowForward />
+                        </IconButton>
+                        <IconButton onClick={() => moveTaskDown(projectIndex, index)}>
+                          <ArrowDownward />
+                        </IconButton>
+                      </Box>
+                    ))}
+                  </Box>
+      
+                  <Box
+                    sx={{
+                      backgroundColor: "#f8ccd0",
+                      padding: 2,
+                      borderRadius: 5,
+                      width: "30%", // Set the width to 30% of the total screen width
+                    }}
+                  >
+                    <Typography variant="h6">High:</Typography>
+                    {project.hightPriority.map((task, taskIndex) => (
+                      <Box key={taskIndex} sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}>
+                        <IconButton onClick={() => moveTaskUp(projectIndex, taskIndex)}>
+                          <ArrowUpward />
+                        </IconButton>
+                        <IconButton onClick={() => moveTaskToLeft(projectIndex, taskIndex)}>
+                          <ArrowBack />
+                        </IconButton>
+                        <Typography>{task}</Typography>
+                        <IconButton onClick={() => moveTaskToRight(projectIndex, taskIndex)}>
+                          <ArrowForward />
+                        </IconButton>
+                        <IconButton onClick={() => moveTaskDown(projectIndex, taskIndex)}>
+                          <ArrowDownward />
+                        </IconButton>
+                      </Box>
+                    ))}
+                  </Box>
+                </Box>
+      
+                <button onClick={() => delateProject(project._id)}>Delete</button>
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
+      );
+      
+      
+      
+      
+
+
+
+}
+
+export default ProjectList

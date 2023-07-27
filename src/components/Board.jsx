@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import DashboardHome from "./DashboardHome";
 import UserNotes from "./Notes";
+import ProjectBoard from "./ProjectBoard";
+import ProjectList from "./ProjectList";
 
 const Board = (props) => {
   const {
@@ -19,7 +21,7 @@ const Board = (props) => {
   return (
     <div className="order-2 bg-gray col-start-1 col-end-9 lg:col-start-2 lg:col-end-10 lg:row-start-1 lg:row-end-3 ">
       {showDashboard && <DashboardHome />}
-      {showProjects && <div>List of Projects</div>}
+      {showProjects && <ProjectList />}
       {showNotes && <UserNotes />}
       {showCalendar && <div>Calendar</div>}
     </div>
