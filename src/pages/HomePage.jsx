@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import Herorows from "../components/HeroRows";
+import Herorows from "../components/Herorows";
 import Features from "../components/Features";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
