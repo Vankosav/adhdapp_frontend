@@ -5,6 +5,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import axios from 'axios';
 import { Button } from "@mui/material";
 import { AuthContext } from '../context/auth.context';
+import { format } from 'date-fns';
 
 
 
@@ -78,12 +79,12 @@ const Calendar = () => {
   
   const formatDateForInput = (dateString) => {
     const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  return `${year}-${month}-${day}T${hours}:${minutes}`;
   };
   
 
@@ -306,12 +307,13 @@ const Calendar = () => {
             <div className="fb-card p-2 mb-4" key={event._id}>
             
               <h2>{event.title}</h2>
-              <p>{event.start}</p>
-              <p>{event.end}</p>
+              <p>{format(new Date(event.start), 'dd MMM yyyy')}</p>
+              <p>{format(new Date(event.start), 'HH:mm')}</p>
               <p>{event.location}</p>
               
               <Button
                 onClick={() => handleEditEvent(event._id, event.title, event.start, event.end, event.location)}
+                className="fb-btn fb-btn-primary"
                 sx={{
                   background: "#F39B53",
                   "&:hover": {
@@ -322,7 +324,8 @@ const Calendar = () => {
                 Edit
               </Button>
               <Button
-                onClick={() => handleDeleteEvent(event._id)} // Pass the eventId to the handleDeleteEvent function
+                onClick={() => handleDeleteEvent(event._id)}
+                className="fb-btn fb-btn-danger" 
                 sx={{
                   background: "#F39B53",
                   "&:hover": {

@@ -19,6 +19,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.6",
     "axios": "^1.4.0",
+    "date-fns": "^2.30.0",
     "dotenv": "^16.3.1",
     "flowbite": "^1.7.0",
     "flowbite-react": "^0.4.10",
