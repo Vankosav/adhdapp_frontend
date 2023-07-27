@@ -44,7 +44,7 @@ function App() {
             }
           />
           <Route
-            path="calendar"
+            path="events"
             element={
               <IsPrivate>
                 <Dashboard />
@@ -52,6 +52,15 @@ function App() {
             }
           />
         </Route>
+        <Route 
+          path="/events/:id" 
+          element={
+              <IsPrivate>
+                <Dashboard />
+              </IsPrivate>
+            }
+        />  
+        
 
         <Route path="signup" element={<SignInForm />} />
         <Route path="login" element={<LoginForm />} />
