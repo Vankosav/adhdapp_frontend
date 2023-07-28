@@ -5,7 +5,7 @@ import { PriorityHigh } from "@mui/icons-material";
 import { AuthContext } from "../context/auth.context";
 import { Grid, Paper, Typography, TextField, Button, Select, MenuItem, Box } from "@mui/material";
 
-const API_URL = "http://localhost:5005";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function AddProjedct({ fetchProjects }) {
   const { user } = useContext(AuthContext);
