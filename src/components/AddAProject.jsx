@@ -114,7 +114,7 @@ function AddProjedct({ fetchProjects }) {
       </Grid>
 
       <Grid item container xs={12} md={6} spacing={2} justifyContent="center">
-        <Grid item xs={12} md={4} >
+        <Grid item xs={12} md={4}>
           <Box
             sx={{
               backgroundColor: "#d4e1f1",
